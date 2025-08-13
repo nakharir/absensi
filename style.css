@@ -1,0 +1,250 @@
+:root {
+  /* palet hijau-putih yang lembut (nggak terlalu kontras) */
+  --bg: #f2f7f4;
+  --panel: #ffffff;
+  --ink: #263238;
+  --muted: #6b7c75;
+
+  --g-50: #f1f8f4;
+  --g-100: #e6f3ea;
+  --g-200: #d3eadb;
+  --g-300: #b7dcc2;
+  --g-500: #4caf50; /* aksen */
+  --g-600: #439a46;
+  --line: #dfe7e3;
+  --ring: #a9d3b0;
+
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--bg), var(--g-50));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  text-align: center;
+  padding: 24px 16px 12px;
+  background: linear-gradient(180deg, var(--g-100), transparent);
+}
+.logo {
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 8px;
+  border-radius: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.title {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+}
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 20px auto;
+  padding: 0 16px;
+  flex: 1;
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--g-200);
+  border-radius: 12px;
+  color: var(--ink);
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+textarea {
+  min-height: 42px;
+  resize: vertical;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--g-300);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+/* Tabel yang jadi kartu di mobile */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.table th,
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.table th {
+  background: var(--g-100);
+  color: var(--ink);
+  font-weight: 700;
+}
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* status (Hadir/Tidak Hadir) jadi chip */
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--g-200);
+  background: var(--g-100);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.05s ease-in-out, border-color 0.15s;
+}
+.chip input {
+  display: none;
+}
+.chip[data-checked="true"] {
+  border-color: var(--g-500);
+  background: #e9f7ec;
+  box-shadow: 0 0 0 2px #e1f3e5 inset;
+}
+
+/* textarea “kotak” */
+.note {
+  background: #fff;
+  border: 1px solid var(--g-200);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+/* actions */
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.btn {
+  appearance: none;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary {
+  background: var(--g-500);
+  color: white;
+  box-shadow: 0 6px 14px rgba(76, 175, 80, 0.18);
+}
+.btn-primary:hover {
+  background: var(--g-600);
+}
+.btn-ghost {
+  background: var(--g-100);
+  color: var(--ink);
+  border: 1px solid var(--g-200);
+}
+
+.status {
+  margin: 6px 2px 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 14px;
+  color: var(--muted);
+}
+
+/* Mobile: baris kartu */
+@media (max-width: 680px) {
+  .table thead {
+    display: none;
+  }
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+  }
+  .table td {
+    border: none;
+    padding: 8px 0;
+  }
+  .td-label {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Absensi Petugas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <h1 class="title">Absensi Petugas</h1>
+      <p class="subtitle">Pilih slot, isi kehadiran per petugas, lalu kirim</p>
+    </header>
+
+    <main class="container">
+      <section class="panel">
+        <div class="grid">
+          <div class="field">
+            <label for="tanggal">Tanggal</label>
+            <input type="date" id="tanggal" />
+          </div>
+          <div class="field">
+            <label for="slot">Hari & Jam</label>
+            <select id="slot">
+              <option value="">— Pilih Hari & Jam —</option>
+              <!-- opsi diisi otomatis dari CONFIG.slots -->
+            </select>
+          </div>
+        </div>
+
+        <form id="absenForm" class="form">
+          <div id="petugasContainer" class="table-wrap">
+            <!-- daftar petugas muncul otomatis -->
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Kirim Absensi</button>
+            <button type="button" id="resetBtn" class="btn btn-ghost">
+              Reset
+            </button>
+          </div>
+
+          <p id="statusMsg" class="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>© 2025 • Zona waktu Asia/Jakarta</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
