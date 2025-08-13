@@ -157,15 +157,60 @@ textarea:focus {
   background: var(--g-100);
   cursor: pointer;
   user-select: none;
-  transition: transform 0.05s ease-in-out, border-color 0.15s;
+  transition: transform 0.15s ease, border-color 0.15s, background-color 0.15s;
 }
-.chip input {
-  display: none;
-}
+
 .chip[data-checked="true"] {
   border-color: var(--g-500);
   background: #e9f7ec;
   box-shadow: 0 0 0 2px #e1f3e5 inset;
+  transform: scale(1.05);
+  animation: pulseSelect 0.25s ease;
+}
+
+/* Efek untuk Hadir */
+.chip input[value="Hadir"]:checked + span,
+.chip[data-checked="true"]:has(input[value="Hadir"]) {
+  background-color: #d1f0d6;
+}
+
+/* Efek untuk Tidak Hadir */
+.chip[data-checked="true"]:has(input[value="Tidak Hadir"]) {
+  background-color: #ffe6e6;
+  animation: shake 0.3s ease;
+}
+
+/* Animasi pulse */
+@keyframes pulseSelect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* Animasi shake */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-3px);
+  }
+  40% {
+    transform: translateX(3px);
+  }
+  60% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
 }
 
 /* textarea “kotak” */
