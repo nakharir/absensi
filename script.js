@@ -7,7 +7,19 @@
 const CONFIG = {
   APPS_SCRIPT_URL: "PASTE_WEB_APP_URL_DI_SINI", // ex: https://script.google.com/macros/s/AKfyc.../exec
   slots: {
-    "Senin - Jam 1": ["Ari", "Bima"],
+    "Senin - Jam 1": [
+      "1 Wustho A - Ustd. Noviya",
+      "1 Wustho B - Ustd. Sevira",
+      "1 Wustho C - Ust. Budi",
+      "1 Wustho D - Ust. Diki",
+      "1 Wustho E - Ust. Izzuddin",
+      "1 Wustho F - Ust. Agus",
+      "2 Wustho A - Ustd. Haya",
+      "2 Wustho B - Ustd. Aliya",
+      "2 Wustho C - Ustd. Wafiq",
+      "2 Wustho D - Ust. Bayu",
+      "2 Wustho E - Ust. Oryzaki",
+    ],
     "Senin - Jam 2": ["Sinta", "Dina"],
     "Selasa - Jam 1": ["Tara", "Bagas"],
     "Selasa - Jam 2": ["Raka", "Lia"],
