@@ -6,7 +6,7 @@
 ======================= */
 const CONFIG = {
   APPS_SCRIPT_URL:
-    "https://script.google.com/macros/s/AKfycbyv7nkjI75M4MK0J_jt1tZvkjuEKhT1XIcADoCWZhjcdSzWeNGGkdyQcOY3Z2OxWKRfww/exec", // ex: https://script.google.com/macros/s/AKfyc.../exec
+    "https://script.google.com/macros/s/AKfycbzWirahkYpYb1i8OXAhcR0P59YTHWlxHgVOz8diWle1x8sWtPvYyW9uYEKdW55KDzDaRA/exec", // ex: https://script.google.com/macros/s/AKfyc.../exec
   slots: {
     "Senin - Jam 1": [
       "1 Wustho A - Ustd. Noviya",
@@ -52,6 +52,14 @@ const CONFIG = {
       "2 Ulya B - Ust. Baron",
       "3 Ulya - Ust. Budi Jiwan",
     ],
+    "Selasa - Jam 1": ["Tara", "Bagas"],
+    "Selasa - Jam 2": ["Raka", "Lia"],
+    "Selasa - Jam 1": ["Tara", "Bagas"],
+    "Selasa - Jam 2": ["Raka", "Lia"],
+    "Selasa - Jam 1": ["Tara", "Bagas"],
+    "Selasa - Jam 2": ["Raka", "Lia"],
+    "Selasa - Jam 1": ["Tara", "Bagas"],
+    "Selasa - Jam 2": ["Raka", "Lia"],
     "Selasa - Jam 1": ["Tara", "Bagas"],
     "Selasa - Jam 2": ["Raka", "Lia"],
     // tambahkan slot lain di sini...
@@ -237,22 +245,31 @@ function slug(s) {
     { nama: "Bima", status: "Tidak Hadir", keterangan: "Sakit" }
   ]
 }
-
-=== APPS SCRIPT (contoh ringkas) ===
-const SPREADSHEET_ID = "PASTE_SPREADSHEET_ID_DI_SINI";
-function doPost(e){
+*/
+const SPREADSHEET_ID = "18cGRzPaUdZBZfc1hRVOC_OrlUYbzPbcxEDIEo1yi938";
+function doPost(e) {
   const data = JSON.parse(e.postData.contents);
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   const sheetName = data.slot; // 1 tab per jam
   const sh = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
-  if (sh.getLastRow() === 0){
-    sh.appendRow(["Timestamp","Tanggal","Nama Petugas","Status","Keterangan"]);
+  if (sh.getLastRow() === 0) {
+    sh.appendRow([
+      "Timestamp",
+      "Tanggal",
+      "Nama Petugas",
+      "Status",
+      "Keterangan",
+    ]);
   }
-  const ts = Utilities.formatDate(new Date(), "Asia/Jakarta", "yyyy-MM-dd HH:mm:ss");
-  data.petugas.forEach(p=>{
+  const ts = Utilities.formatDate(
+    new Date(),
+    "Asia/Jakarta",
+    "yyyy-MM-dd HH:mm:ss"
+  );
+  data.petugas.forEach((p) => {
     sh.appendRow([ts, data.tanggal, p.nama, p.status, p.keterangan || ""]);
   });
-  return ContentService.createTextOutput(JSON.stringify({ok:true}))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(
+    JSON.stringify({ ok: true })
+  ).setMimeType(ContentService.MimeType.JSON);
 }
-*/
