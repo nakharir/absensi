@@ -5,7 +5,8 @@
    Apps Script akan memakai nama sheet = nama slot (otomatis bikin kalau belum ada).
 ======================= */
 const CONFIG = {
-  APPS_SCRIPT_URL: "PASTE_WEB_APP_URL_DI_SINI", // ex: https://script.google.com/macros/s/AKfyc.../exec
+  APPS_SCRIPT_URL:
+    "https://script.google.com/macros/s/AKfycbyv7nkjI75M4MK0J_jt1tZvkjuEKhT1XIcADoCWZhjcdSzWeNGGkdyQcOY3Z2OxWKRfww/exec", // ex: https://script.google.com/macros/s/AKfyc.../exec
   slots: {
     "Senin - Jam 1": [
       "1 Wustho A - Ustd. Noviya",
@@ -29,7 +30,28 @@ const CONFIG = {
       "2 Ulya B - KH. Mizan",
       "3 Ulya - Ust. Samsudin",
     ],
-    "Senin - Jam 2": ["Sinta", "Dina"],
+    "Senin - Jam 2": [
+      "1 Wustho A - Ustd. Najma",
+      "1 Wustho B - Ust. Anwar",
+      "1 Wustho C - Ust. Budi",
+      "1 Wustho D - Ust. Tamam",
+      "1 Wustho E - Ust. Makmur",
+      "1 Wustho F - Ust. Kainul",
+      "2 Wustho A - Ustd. Aliya",
+      "2 Wustho B - Ustd. Arifa",
+      "2 Wustho C - Ustd. Itsna",
+      "2 Wustho D - Ust. Afif",
+      "2 Wustho E - Ust. Purwoko",
+      "3 Wustho A - Ustd. Muyas",
+      "3 Wustho B - Ust. Syaifudin",
+      "3 Wustho C - Ust. Arbain",
+      "3 Wustho D - Ust. Rasyid",
+      "1 Ulya A - Ustd. Fida",
+      "1 Ulya A - Ust. Zufri",
+      "2 Ulya A - Ust. Agung",
+      "2 Ulya B - Ust. Baron",
+      "3 Ulya - Ust. Budi Jiwan",
+    ],
     "Selasa - Jam 1": ["Tara", "Bagas"],
     "Selasa - Jam 2": ["Raka", "Lia"],
     // tambahkan slot lain di sini...
