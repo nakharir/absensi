@@ -293,4 +293,23 @@ textarea:focus {
     color: var(--muted);
     margin-bottom: 4px;
   }
+  .loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc; /* garis abu-abu */
+    border-top-color: var(--g-500); /* garis atas warna hijau */
+    border-radius: 50%; /* jadi lingkaran */
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }

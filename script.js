@@ -414,6 +414,10 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
+  const submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<span class="loading-spinner"></span> Mengirim...';
+
   const petugas = (CONFIG.slots[slot] || []).map((nama, idx) => {
     const safe = slug(`${nama}-${idx}`);
     const statusVal =
@@ -445,6 +449,8 @@ form.addEventListener("submit", async (e) => {
     console.error(err);
     status("❌ Gagal kirim. Cek koneksi atau URL Apps Script.", false);
   }
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Kirim Absensi";
 });
 
 /* =======================
@@ -473,28 +479,35 @@ function slug(s) {
 }
 */
 const SPREADSHEET_ID = "18cGRzPaUdZBZfc1hRVOC_OrlUYbzPbcxEDIEo1yi938";
+
 function doPost(e) {
   const data = JSON.parse(e.postData.contents);
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  const sheetName = data.slot; // 1 tab per jam
+  const sheetName = data.slot; // 1 tab per slot
   const sh = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
+
+  // header kalau sheet masih kosong
   if (sh.getLastRow() === 0) {
     sh.appendRow([
       "Timestamp",
-      "Tanggal",
+      "Bulan",
       "Nama Petugas",
       "Status",
       "Keterangan",
     ]);
   }
+
   const ts = Utilities.formatDate(
     new Date(),
     "Asia/Jakarta",
     "yyyy-MM-dd HH:mm:ss"
   );
+
+  // masukkan semua baris petugas
   data.petugas.forEach((p) => {
-    sh.appendRow([ts, data.tanggal, p.nama, p.status, p.keterangan || ""]);
+    sh.appendRow([ts, data.bulan, p.nama, p.status, p.keterangan || ""]);
   });
+
   return ContentService.createTextOutput(
     JSON.stringify({ ok: true })
   ).setMimeType(ContentService.MimeType.JSON);
